@@ -12,6 +12,7 @@ public class MyHeap{
       int child1 = index * 2 + 1;
       int child2 = index * 2 + 2;
       if(child1 >= size && child2 >= size) done = true;
+      if(child1 < size && child2 < size){
         int larger = Math.max(data[index], data[child1]);
         int largest = Math.max(larger, data[child2]);
         if(largest != data[index]){
@@ -25,7 +26,15 @@ public class MyHeap{
             index = child2;
           }
         }else done = true;
+      }else{
+        int larger = Math.max(data[index], data[child1]);
+        if(larger != data[index]){
+          data[child1] = data[index];
+          data[index] = larger;
+          index = child1;
+        }else done = true;
       }
+    }
   }
 
   /*
