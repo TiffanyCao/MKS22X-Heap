@@ -38,11 +38,32 @@ public class MyHeap{
   }
 
   /*
-  private static void pushUp(int[]data,int index)
-     - push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
-     - precondition: index is between 0 and data.length-1 inclusive.
+  - push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
+  - precondition: index is between 0 and data.length-1 inclusive.
+  */
+  private static void pushUp(int[]data, int index){
+    boolean done = false;
+    while(!done){
+      if(index == 0) done = true;
+      else{
+        int parent;
+        if(index % 2 == 0) parent = (index / 2) - 1;
+        else parent = index / 2;
+        if(parent >= 0){
+          int temp = data[index];
+          if(data[index] > data[parent]){
+            data[index] = data[parent];
+            data[parent] = temp;
+            index = parent;
+          }else done = true;
+        }else done = true;
+      }
+    }
+  }
 
 
+
+  /*
   //We will discuss this today:
   public static void heapify(int[])
      - convert the array into a valid heap. [ should be O(n) ]
