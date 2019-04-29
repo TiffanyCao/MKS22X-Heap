@@ -1,5 +1,6 @@
 public class MyHeap{
   //We discussed these 2 methods already:
+
   /*
   - size  is the number of elements in the data array.
   - push the element at index i downward into the correct position. This will swap with the larger of the child nodes provided that child is larger. This stops when a leaf is reached, or neither child is larger. [ should be O(logn) ]
@@ -26,7 +27,7 @@ public class MyHeap{
             index = child2;
           }
         }else done = true;
-      }else{
+      }else if(child1 < size){
         int larger = Math.max(data[index], data[child1]);
         if(larger != data[index]){
           data[child1] = data[index];
@@ -61,6 +62,15 @@ public class MyHeap{
     }
   }
 
+  public static String printA(int[] data, int size){
+    String result = "[";
+    for(int i = 0; i < size; i++){
+      result += data[i];
+      if(i != size - 1) result += ", ";
+    }
+    result += "]";
+    return result;
+  }
 
 
   /*
@@ -71,5 +81,22 @@ public class MyHeap{
   public static void heapsort(int[])
      - sort the array by converting it into a heap then removing the largest value n-1 times. [ should be O(nlogn) ]
   */
+  public static void main(String[] args){
+    int[] test1 = {10, 11, 8, 7, 6, 5, 4, 2, 1};
+    System.out.println("test1 before: " + printA(test1, test1.length));
+    pushDown(test1, test1.length, 0);
+    System.out.println("test1 after: " + printA(test1, test1.length));
 
+    int[] test2 = new int[10];
+    test2[0] = 10;
+    test2[1] = 9;
+    test2[2] = 1;
+    test2[3] = 8;
+    test2[4] = 7;
+    test2[5] = 6;
+    System.out.println("test2 before: " + printA(test2, 6));
+    pushDown(test2, 6, 2);
+    System.out.println("test2 after: " + printA(test2, 6));
+
+  }
 }
