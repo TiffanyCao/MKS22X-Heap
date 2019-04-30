@@ -101,7 +101,7 @@ public class MyHeap{
   public static void heapsort(int[] data){
     heapify(data); //make it into a heap
     int size = data.length - 1; //get the last index
-    for(int i = 0; i <= data.length - 1; i++){ //repeat for n-1 times
+    for(int i = 0; i <= data.length - 2; i++){ //repeat for n-1 times
       int temp = data[0]; //swap the largest element (at index 0) with the smallest element (at index data.length - 1)
       data[0] = data[size];
       data[size] = temp;
