@@ -83,11 +83,18 @@ public class MyHeap{
   }
 
 
-  /*
   //We will discuss this today:
-  public static void heapify(int[])
-     - convert the array into a valid heap. [ should be O(n) ]
+  /**A method that converts an array into a heap array
+  - convert the array into a valid heap. [ should be O(n) ]
+  *@param int[] data
+  */
+  public static void heapify(int[] data){
+    for(int i = data.length - 1; i >= 0; i--){
+      pushDown(data, data.length, i);
+    }
+  }
 
+  /*
   public static void heapsort(int[])
      - sort the array by converting it into a heap then removing the largest value n-1 times. [ should be O(nlogn) ]
   */
@@ -124,5 +131,14 @@ public class MyHeap{
     pushUp(test3, 6);
     System.out.println("test3 after: " + printA(test3, test3.length) + "\n");
 
+    int[] test4 = {1, 2, 3, 4, 5, 6};
+    System.out.println("test4: " + printA(test4, test4.length));
+    heapify(test4);
+    System.out.println("test4 heap: " + printA(test4, test4.length) + "\n");
+
+    int[] test5 = {1, 2, 3, 4, 5, 6, 7, 8};
+    System.out.println("test5: " + printA(test5, test5.length));
+    heapify(test5);
+    System.out.println("test5 heap: " + printA(test5, test5.length) + "\n");
   }
 }
