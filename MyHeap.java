@@ -89,8 +89,9 @@ public class MyHeap{
   *@param int[] data
   */
   public static void heapify(int[] data){
-    for(int i = data.length - 1; i >= 0; i--){
-      pushDown(data, data.length, i);
+    int last = ((data.length - 1) - 1) / 2; //find the second tto last row and start there
+    for(int i = last; i >= 0; i--){
+      pushDown(data, data.length, i); //push each element into the right index of the heap
     }
   }
 
