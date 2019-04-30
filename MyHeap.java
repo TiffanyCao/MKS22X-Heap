@@ -95,10 +95,22 @@ public class MyHeap{
     }
   }
 
-  /*
-  public static void heapsort(int[])
-     - sort the array by converting it into a heap then removing the largest value n-1 times. [ should be O(nlogn) ]
+  /**A method that sorts the array by converting it into a heap then removing the largest value n-1 times. [ should be O(nlogn) ]
+  *@param int[] data
   */
+  public static void heapsort(int[] data){
+    heapify(data); //make it into a heap
+    int size = data.length - 1; //get the last index
+    for(int i = 0; i <= data.length - 1; i++){ //repeat for n-1 times
+      int temp = data[0]; //swap the largest element (at index 0) with the smallest element (at index data.length - 1)
+      data[0] = data[size];
+      data[size] = temp;
+      pushDown(data, size, 0); //push down the element at 0 to get the next largest element
+      size--; //reduce the size so the elements already in order don't get messed up
+    }
+  }
+
+
   public static void main(String[] args){
     int[] test1 = {10, 11, 8, 7, 6, 5, 4, 2, 1};
     System.out.println("test1 before: " + printA(test1, test1.length));
@@ -141,5 +153,10 @@ public class MyHeap{
     System.out.println("test5: " + printA(test5, test5.length));
     heapify(test5);
     System.out.println("test5 heap: " + printA(test5, test5.length) + "\n");
+
+    int[] test6 = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    System.out.println("test6: " + printA(test6, test6.length));
+    heapsort(test6);
+    System.out.println("test6 sorted: " + printA(test6, test6.length) + "\n");
   }
 }
